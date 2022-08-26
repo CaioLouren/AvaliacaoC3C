@@ -11,35 +11,36 @@ form.addEventListener('submit', function (e) {
         return;
     }
 
-    const msg = `${LuidyMoura(valor)}`;
+    let msg = LuidyMoura(valor);
     setResultado(msg, true);
 });
 
 function LuidyMoura(valor) {
-
+    let text = '';
     for (let i = 1; i <= valor; i++) {
-        if (valor % 5 === 0 && valor % 9 === 0) {
-            console.log('LuidyMoura')
-        } else if (valor % 5 === 0) {
-            console.log('Luidy')
-        } else if (valor % 9 === 0) {
-            console.log('Moura')
+        if (i % 5 === 0 && i % 9 === 0) {
+            text += i != valor ? 'LuidyMoura, \n' : 'LuidyMoura.';
+        } else if (i % 5 === 0) {
+            text += i != valor ? 'Luidy, \n' : 'Luidy.';
+        } else if (i % 9 === 0) {
+            text += i != valor ? 'Moura, \n' : 'Moura.';
         } else {
-            console.log(i)
+            text += i != valor ? i + ', \n' : i + '. \n';
         }
     }
+    return text;
 }
 
 function criaP() {
-    const p = document.createElement('p');
+    let p = document.createElement('p');
     return p;
 }
 
 function setResultado(msg, isValid) {
-    const resultado = document.querySelector('#resultado');
+    let resultado = document.querySelector('#resultado');
     resultado.innerHTML = '';
 
-    const p = criaP();
+    let p = criaP();
 
     if (isValid) {
         p.classList.add('paragrafo-resultado');
